@@ -62,12 +62,6 @@ public class NoticeService implements BoardService {
 		return noticeDAO.getDetail(boardVO);
 	}
 	
-	@Override
-	public FileVO getFileDetail(FileVO fileVO) throws Exception {
-		// TODO Auto-generated method stub
-		return noticeDAO.getFileDetail(fileVO);
-	}
-	
 	
 
 }
