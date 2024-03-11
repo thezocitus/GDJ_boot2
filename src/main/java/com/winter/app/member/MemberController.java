@@ -24,32 +24,26 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	@GetMapping("update")
+	public void update(Model model)throws Exception{
+		MemberVO memberVO= memberService.detail();
+		model.addAttribute("memberVO", memberVO);
+	}
+	
+	@PostMapping("update")
+	public String update(@Validated(MemberUpdateGroup.class) MemberVO memberVO, BindingResult bindingResult)throws Exception{
+		if(bindingResult.hasErrors()) {
+			return "member/update";
+		}
+		return "redirect:../";
+	}
+	
+	
 	@GetMapping("add")
 	public void add(@ModelAttribute MemberVO memberVO)throws Exception{
 		
 		//model.addAttribute("memberVO", memberVO);
 	}
-	
-	@GetMapping("update")
-	public void update(Model model)throws Exception{
-		
-		MemberVO memberVO = new MemberVO();
-		
-		model.addAttribute("memberVO", memberVO);	
-		
-	}
-	
-	@PostMapping("update")
-	public String update(@Validated(MemberUpdateGroup.class) MemberVO memberVO, BindingResult bindingResult)throws Exception{
-		
-		if(bindingResult.hasErrors()) {
-			return "member/update";					
-		}
-		
-		return "resirect:../";
-		
-	}
-	
 	
 	@PostMapping("add")
 	public String add(@Validated(MemberJoinGroup.class) MemberVO memberVO,BindingResult bindingResult, Model model)throws Exception{

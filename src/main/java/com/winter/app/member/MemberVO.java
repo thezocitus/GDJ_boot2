@@ -19,16 +19,15 @@ public class MemberVO {
 	@NotBlank(message = "꼭 입력하세요", groups = {MemberJoinGroup.class, MemberUpdateGroup.class})
 	private String username;
 	
-	
 	@NotBlank(groups = MemberJoinGroup.class)
-	@Size(min=8, max = 16, groups=MemberJoinGroup.class)
+	@Size(min=8, max = 16, groups = MemberJoinGroup.class)
 	private String password;
 	
 	private String passwordCheck;
 	
 	
 	private String phone;
-	@Email(groups= {MemberJoinGroup.class, MemberUpdateGroup.class})
+	@Email(groups = {MemberJoinGroup.class, MemberUpdateGroup.class})
 	private String email;
 	private String address;
 	private String name;
